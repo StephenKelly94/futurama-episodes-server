@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 // Fix deprecation warning
 mongoose.Promise = global.Promise;
-mongoose.connect();
+mongoose.connect(DB_URL);
 
 //Clear and repopulate database
 Episode.remove({}, (err) => {
