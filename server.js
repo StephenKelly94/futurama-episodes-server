@@ -10,7 +10,7 @@ const router        = express.Router();
 const app           = express();
 
 const port          = process.env.PORT || 8080;
-const DB_URL        = 'mongodb://localhost:27017/futurama-episodes' || process.env.MONGODB_URI
+const DB_URL        = process.env.MONGODB_URI || 'mongodb://localhost:27017/futurama-episodes'
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
