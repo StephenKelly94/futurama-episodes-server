@@ -10,7 +10,7 @@ const router        = express.Router();
 const app           = express();
 
 const port          = process.env.PORT || 8080;
-
+const DB_URL        = 'mongodb://localhost:27017/futurama-episodes' || process.env.MONGODB_URI
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 // Fix deprecation warning
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/futurama-episodes');
+mongoose.connect();
 
 //Clear and repopulate database
 Episode.remove({}, (err) => {
