@@ -46,21 +46,7 @@ Episode.remove({}, (err) => {
           });
         }
 
-        router.get('/', (req, res) => {
-          let episode = req.query.episode;
-          if(episodes)
-          {
-            let amount = req.query.amount || 10;
-            res.json({ message: 'hooray! welcome to our api!' +  amount });
-          }else{
-            res.json({ message: 'hooray! welcome to our api!'});
-          }
-
-
-        });
-
         app.use('/api/episodes', episodeRoutes);
-        app.use('/api', router);
 
         app.listen(port);
         console.log('App is running on ' + port);

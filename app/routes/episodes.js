@@ -17,7 +17,7 @@ router.route('/')
     //Make the query
     Episode.find(query, (err, episodes) => {
       if (err){
-        res.send(err);
+        res.status(500).send('No episodes exist');
       }else{
         res.json(episodes);
       }
@@ -29,7 +29,7 @@ router.route('/:episode_id')
   .get((req, res) => {
     Episode.findById(req.params.episode_id, (err, episode) => {
       if (err){
-        res.send(err);
+        res.status(404).send('Episode not found');
       }else{
         res.json(episode);
       }
