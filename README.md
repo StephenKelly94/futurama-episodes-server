@@ -1,10 +1,9 @@
 # Server
-----
 An express application serving all futurama episodes from a mongo database.
 
 **Show Episodes**
 ----
-Returns json data about futurama episodes.
+  Returns json data about futurama episodes.
 
 * **URL**
 
@@ -49,57 +48,57 @@ Returns json data about futurama episodes.
     });
   ```
 
-  **Show Episode**
-  ----
-    Returns json data about a single episode.
+**Show Episode**
+----
+  Returns json data about a single episode.
 
-  * **URL**
+* **URL**
 
-    /api/episodes/:id
+  /api/episodes/:id
 
-  * **Method:**
+* **Method:**
 
-    `GET`
+  `GET`
 
-  *  **URL Params**
+*  **URL Params**
 
-    None
+  None
 
-  * **Data Params**
+* **Data Params**
 
-    None
+  None
 
-  * **Success Response:**
+* **Success Response:**
 
-    * **Code:** 200 <br />
-      **Content:**
-      ```javascript
-      {
-        _id: "5885e2aa867876000457f0f1",
-        imageUrl:"http://static.tvmaze.com/uploads/images/original_untouched/57/144196.jpg",
-        season: 6,
-        episode: 22,
-        title: "Fry am the Egg Man",
-        episode_num: 93,
-        __v: 0
-      }
-      ```
-
-  * **Error Response:**
-
-    * **Code:** 404 Not Found <br />
-      **Content:** `{ error : "Episode not found" }`
-
-
-  * **Sample Call:**
-
+  * **Code:** 200 <br />
+    **Content:**
     ```javascript
-      $.ajax({
-        url: "/api/episodes/5885e2aa867876000457f0f1",
-        dataType: "json",
-        type : "GET",
-        success : function(r) {
-          console.log(r);
-        }
-      });
+    {
+      _id: "5885e2aa867876000457f0f1",
+      imageUrl:"http://static.tvmaze.com/uploads/images/original_untouched/57/144196.jpg",
+      season: 6,
+      episode: 22,
+      title: "Fry am the Egg Man",
+      episode_num: 93,
+      __v: 0
+    }
     ```
+
+* **Error Response:**
+
+  * **Code:** 404 Not Found <br />
+    **Content:** `{ error : "Episode not found" }`
+
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/api/episodes/5885e2aa867876000457f0f1",
+      dataType: "json",
+      type : "GET",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
