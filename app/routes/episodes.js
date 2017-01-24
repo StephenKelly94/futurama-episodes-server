@@ -12,12 +12,12 @@ router.route('/')
     if(episode)
     {
       let size = req.query.size || 10;
-      query.episode_num = { $gte: episode, $lt: Number(episode) + Number(size) };
+      query.episode_num = { $gte: Number(episode), $lt: Number(episode) + Number(size) };
     }
     //Make the query
-    Episode.find(query, (err, episodes) => {
+    Episode.find(query).sort({episode_num: 'asc'}).exec((err, episodes) => {
       if (err){
-        res.status(500).send('No episodes exist');
+        res.status(500).send('No episodes exist for this query');
       }else{
         res.json(episodes);
       }
