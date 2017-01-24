@@ -3,7 +3,7 @@ const Episode = require('../models/episode');
 
 const router  = express.Router();
 
-router.route('/')
+router.route('/episodes')
   .get((req, res) => {
     //Make empty query
     let episode = req.query.episode;
@@ -32,6 +32,17 @@ router.route('/:episode_id')
         res.status(404).send('Episode not found');
       }else{
         res.json(episode);
+      }
+    });
+  });
+
+router.route('/season/:season_number')
+  .get((req, res) => {
+    Episode.find({season: req.params.season_number}, (err, episodes) => {
+      if (err){
+        res.status(404).send('Season does not exist');
+      }else{
+        res.json(episodes);
       }
     });
   });

@@ -4,7 +4,7 @@ const request       = require('request');
 const mongoose      = require('mongoose');
 
 const Episode       = require('./app/models/episode');
-const episodeRoutes = require('./app/routes/episodes.js');
+const routes        = require('./app/routes/main.js');
 
 const router        = express.Router();
 const app           = express();
@@ -42,10 +42,12 @@ Episode.remove({}, (err) => {
           let episode = new Episode();
           episode.episode_num = i;
           episode.title = episodes[i].name;
+          episode.summary = episodes[i].summary.replace("<p>", "").replace("</p>", "")
           episode.episode = episodes[i].number;
           episode.season = episodes[i].season;
-          episode.airDate = episodes[i].airDate;
-          episode.imageUrl = episodes[i].image.original;
+          episode.airdate = new Date(episodes[i].airdate);
+          episode.episode_url = episodes[i].url;
+          episode.image_url = episodes[i].image.original;
           episode.save((err) => {
             if(err)
             {
@@ -54,7 +56,7 @@ Episode.remove({}, (err) => {
           });
         }
 
-        app.use('/api/episodes', episodeRoutes);
+        app.use('/api', routes);
 
         app.listen(port);
         console.log('App is running on ' + port);
