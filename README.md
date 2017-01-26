@@ -1,6 +1,8 @@
 # Server
 An express application serving all futurama episodes from a mongo database.
 
+The API, which is deployed on Heroku can be found [here](https://futurama-episodes.herokuapp.com/api/episodes).
+
 **Show Episodes**
 ----
   Returns json data about futurama episodes.
